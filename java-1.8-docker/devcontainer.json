@@ -1,0 +1,113 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+/* 
+
+Java dev container
+
+This template allows you to create an environment with the Java JDK or JRE installed.
+
+Mounts: 
+  1. bash alias directory - contains files of your bash aliases
+  2. local maven settings.xml - contains your maven settings
+  3. docker socket - allows you to run docker commands from within the container
+
+Feature:
+  1. java - installs java 8, maven, ant
+  2. node - installs nodejs
+  3. zsh-plugins - installs zsh plugins
+  4. shell-history - installs shell history
+  5. vscode - installs vscode extensions
+  6. shell-format - installs shell-format
+  7. regex - installs regex
+  8. prettify-json - installs prettify-json
+  9. prettier-vscode - installs prettier-vscode
+  10. vsliveshare - installs vsliveshare
+  11. LiveServer - installs LiveServer
+  12. gitlens - installs gitlens
+  13. copilot - installs copilot
+  14. githistory - installs githistory
+  15. git-graph - installs git-graph
+  16. gitblame - installs gitblame
+  17. markdown-all-in-one - installs markdown-all-in-one
+  18. vscode-github-actions - installs vscode-github-actions
+  19. vscode-markdownlint - installs vscode-markdownlint
+
+*/
+
+{
+  "name": "Java-8-tier2",
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": ".",
+    "args": {
+      "VARIANT": "11-bullseye"
+    }
+  },
+  // "runArgs": ["--add-host=host.docker.internal:host-gateway"],
+  // "runArgs": ["--init", "--privileged"],
+  // "overrideCommand": false,
+  "mounts": [
+    "source=/mnt/work/gh/aa/bash-alias/shared/,target=/home/vscode/aliases/,type=bind",
+    "source=/home/${localEnv:USER}/.m2/settings.xml,target=/home/vscode/.m2/settings.xml,type=bind"
+  ],
+  // sdkman https://github.com/devcontainers/features/blob/main/src/java/README.md
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "8.0.382",
+      "jdkDistro": "zulu",
+      "installGradle": "false",
+      "installMaven": "true",
+      "mavenVersion": "3.6.3",
+      "installAnt": "true"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "nodeGypDependencies": true
+    },
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
+    "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-pack",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.intellicode-api-usage-examples",
+        "redhat.java",
+        "DotJoshJohnson.xml",
+        "Gruntfuggly.todo-tree",
+        "yatki.vscode-surround",
+        "foxundermoon.shell-format",
+        "chrmarti.regex",
+        "mohsen1.prettify-json",
+        "esbenp.prettier-vscode",
+        "ms-vsliveshare.vsliveshare",
+        "ritwickdey.LiveServer",
+        "eamodio.gitlens",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "donjayamanne.githistory",
+        "mhutchie.git-graph",
+        "waderyan.gitblame",
+        "yzhang.markdown-all-in-one",
+        "github.vscode-github-actions",
+        "DavidAnson.vscode-markdownlint"
+      ]
+    }
+  },
+  "forwardPorts": [5000, 4200, 4040],
+  "postCreateCommand": "/home/vscode/scripts/source-all-aliases.sh"
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "java -version",
+
+  // Configure tool-specific properties.
+  // "customizations": {},
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "vscode"
+}

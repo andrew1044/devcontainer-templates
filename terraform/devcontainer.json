@@ -12,7 +12,7 @@
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "mounts": [
     "source=/mnt/work/gh/aa/bash-alias/shared/,target=/home/vscode/aliases/,type=bind,consistency=cached",
-	  "type=bind,source=/home/${localEnv:USER}/.ssh,target=/home/vscode/.ssh,readonly"
+    "type=bind,source=/home/${localEnv:USER}/.ssh,target=/home/vscode/.ssh,readonly"
   ],
   "features": {
     // "ghcr.io/devcontainers/features/common-utils:2": {
@@ -68,14 +68,16 @@
         "ritwickdey.LiveServer",
         "ms-vsliveshare.vsliveshare",
         "ms-vscode.makefile-tools",
-        "yzhang.markdown-all-in-one",
         "christian-kohler.path-intellisense",
         "esbenp.prettier-vscode",
         "mohsen1.prettify-json",
         "mechatroner.rainbow-csv",
         "foxundermoon.shell-format",
         "Gruntfuggly.todo-tree",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "yzhang.markdown-all-in-one",
+        "github.vscode-github-actions",
+        "DavidAnson.vscode-markdownlint"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
